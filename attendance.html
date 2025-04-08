@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Tracking</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Inline styles for user-friendly design */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #185a9d;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .header-logo img {
+            height: 50px;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        header nav ul li a:hover {
+            color: #43cea2;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .attendance-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .attendance-container h1 {
+            text-align: center;
+            color: #185a9d;
+            margin-bottom: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        form input, form select, form textarea, form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        form input:focus, form select:focus, form textarea:focus {
+            border-color: #43cea2;
+            outline: none;
+        }
+
+        form button {
+            background-color: #185a9d;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        form button:hover {
+            background-color: #43cea2;
+            transform: scale(1.02);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #185a9d;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-logo">
+            <img src="../img/logo.png" alt="Company Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="employee-dashboard.html">Dashboard</a></li>
+                <li><a href="employee-login.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="attendance-container">
+            <h1>Mark Your Attendance</h1>
+
+            <form action="../backend/attendance.php" method="POST" id="attendance-form">
+                <label for="attendance-date">Date:</label>
+                <input type="date" id="attendance-date" name="attendance-date" required aria-label="Attendance Date">
+
+                <label for="attendance-status">Status:</label>
+                <select id="attendance-status" name="attendance-status" required aria-label="Attendance Status">
+                    <option value="" disabled selected>Select Status</option>
+                    <option value="Present">Present</option>
+                    <option value="Absent">Absent</option>
+                    <option value="Late">Late</option>
+                    <option value="On Leave">On Leave</option>
+                </select>
+
+                <label for="attendance-remarks">Remarks (Optional):</label>
+                <textarea id="attendance-remarks" name="attendance-remarks" placeholder="Add any remarks here (e.g., Reason for absence)" aria-label="Attendance Remarks"></textarea>
+
+                <button type="submit">Submit Attendance</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Your Company. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Confirmation message after form submission
+        document.getElementById('attendance-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Your attendance has been submitted successfully!');
+            this.submit();
+        });
+    </script>
+</body>
+</html>
