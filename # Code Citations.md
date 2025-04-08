@@ -1,14 +1,26 @@
 # Code Citations
 
-## License: MIT
-https://github.com/automatejs/automate/tree/6046a62c9768a1fd240ad8c071f201946c93fa15/docs/binding.md
+## License: unknown
+https://github.com/spbisc97/ProgettoWeb/tree/91035023574f57e6df8ee5f385ca19019e24361e/index.php
 
 ```
-.html -->
+-->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /
+```
+
+
+## License: unknown
+https://github.com/Rizki36/Escoring/tree/a1465608d1d9b46f52c1624a1448d1042fcb5e63/imlucky/resources/views/login-admin.blade.php
+
+```
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login</
 ```
 
