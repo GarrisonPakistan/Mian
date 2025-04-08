@@ -1,0 +1,179 @@
+<!-- search-results.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #185a9d;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .header-logo img {
+            height: 50px;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        header nav ul li a:hover {
+            color: #43cea2;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #185a9d;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-bottom: 30px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        form input, form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        form input:focus, form button:focus {
+            border-color: #43cea2;
+            outline: none;
+        }
+
+        form button {
+            background-color: #185a9d;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        form button:hover {
+            background-color: #43cea2;
+            transform: scale(1.02);
+        }
+
+        #results-table, #file-results {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #results-table table, #file-results table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #results-table th, #results-table td, #file-results th, #file-results td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #185a9d;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-logo">
+            <img src="../img/logo.png" alt="Company Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../employee/employee-dashboard.html">Dashboard</a></li>
+                <li><a href="../employee/employee-login.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h2>Search Results</h2>
+
+        <!-- Search by Phone -->
+        <form id="search-records-form">
+            <label for="search-phone">Enter Phone Number to Search:</label>
+            <input type="text" id="search-phone" name="search-phone" placeholder="Enter phone number" required />
+            <button type="submit">Search Records</button>
+        </form>
+
+        <!-- Results Display -->
+        <div id="results-table">
+            <!-- This will dynamically load search results from both DB and files -->
+            <p>No results found. Please perform a search.</p>
+        </div>
+
+        <!-- File Search -->
+        <div id="file-search">
+            <h3>Search from Files</h3>
+            <input type="text" id="file-search-number" placeholder="Enter Number to Search in Files" />
+            <button id="search-files-btn">Search Files</button>
+            <div id="file-results">
+                <!-- Display file results here -->
+                <p>No file results found. Please perform a search.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Your Company. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/search.js"></script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Records</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        .search-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #185a9d;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .form-group input, .form-group button {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus, .form-group button:focus {
+            border-color: #43cea2;
+            outline: none;
+        }
+
+        .form-group button {
+            background-color: #185a9d;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .form-group button:hover {
+            background-color: #43cea2;
+            transform: scale(1.02);
+        }
+
+        #search-results {
+            margin-top: 30px;
+        }
+
+        #results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        #results-table th, #results-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        #results-table th {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #185a9d;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <h2>Search Records</h2>
+        
+        <!-- Search Form -->
+        <form id="search-form" method="POST">
+            <div class="form-group">
+                <label for="search-query">Search by CNIC, Phone, or Name</label>
+                <input type="text" id="search-query" name="search-query" placeholder="Enter CNIC, phone number, or name" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Search</button>
+            </div>
+        </form>
+        
+        <!-- Results Section (initially hidden) -->
+        <div id="search-results" style="display: none;">
+            <h3>Search Results</h3>
+            <table id="results-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>CNIC</th>
+                        <th>Phone Number</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Results will be populated here dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Your Company. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Handle the form submission
+        document.getElementById('search-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting the traditional way
+            
+            // Get the search query entered by the user
+            const query = document.getElementById('search-query').value.trim();
+            
+            // Simulate search operation (in a real scenario, you'd make an API call or fetch data)
+            const results = [
+                { name: 'John Doe', cnic: '12345-1234567-1', phone: '3001234567' },
+                { name: 'Jane Smith', cnic: '23456-2345678-2', phone: '3012345678' },
+                { name: 'Ali Khan', cnic: '34567-3456789-3', phone: '3023456789' }
+            ];
+
+            // Filter results based on the search query
+            const filteredResults = results.filter(record => 
+                record.cnic.includes(query) || record.phone.includes(query) || record.name.toLowerCase().includes(query.toLowerCase())
+            );
+
+            // Populate the results table
+            const resultsTableBody = document.querySelector('#results-table tbody');
+            resultsTableBody.innerHTML = ''; // Clear previous results
+
+            if (filteredResults.length > 0) {
+                filteredResults.forEach(record => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${record.name}</td>
+                        <td>${record.cnic}</td>
+                        <td>${record.phone}</td>
+                        <td><a href="#">View Details</a></td>
+                    `;
+                    resultsTableBody.appendChild(row);
+                });
+            } else {
+                resultsTableBody.innerHTML = '<tr><td colspan="4">No results found.</td></tr>';
+            }
+
+            // Display the results section
+            document.getElementById('search-results').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
