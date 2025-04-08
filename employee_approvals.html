@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Approvals</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f7fc;
+      margin: 0;
+      padding: 0;
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+      color: #185a9d;
+      font-size: 28px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .table-container {
+      margin-top: 20px;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #185a9d;
+      color: white;
+      padding: 12px;
+      text-align: center;
+    }
+
+    td {
+      padding: 12px;
+      text-align: center;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .action-buttons button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .approve-button {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .approve-button:hover {
+      background-color: #388E3C;
+    }
+
+    .reject-button {
+      background-color: #f44336;
+      color: white;
+    }
+
+    .reject-button:hover {
+      background-color: #d32f2f;
+    }
+
+    .no-records {
+      text-align: center;
+      color: #f44336;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .content {
+        padding: 15px;
+      }
+
+      h3 {
+        font-size: 24px;
+      }
+
+      table {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Employee Approvals Section -->
+<div class="content">
+  <h3>Employee Approvals</h3>
+
+  <div class="table-container">
+    <!-- Employee Application List -->
+    <table id="employee-table">
+      <thead>
+        <tr>
+          <th>Employee Name</th>
+          <th>Job Title</th>
+          <th>Application Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Example of Employee Data -->
+        <tr>
+          <td>John Doe</td>
+          <td>Software Developer</td>
+          <td>2025-04-06</td>
+          <td><span class="status">Pending</span></td>
+          <td class="action-buttons">
+            <button class="approve-button" onclick="approveEmployee(this)" title="Approve this employee">Approve</button>
+            <button class="reject-button" onclick="rejectEmployee(this)" title="Reject this employee">Reject</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Jane Smith</td>
+          <td>UI/UX Designer</td>
+          <td>2025-04-05</td>
+          <td><span class="status">Pending</span></td>
+          <td class="action-buttons">
+            <button class="approve-button" onclick="approveEmployee(this)" title="Approve this employee">Approve</button>
+            <button class="reject-button" onclick="rejectEmployee(this)" title="Reject this employee">Reject</button>
+          </td>
+        </tr>
+        <!-- Add more employees here as needed -->
+      </tbody>
+    </table>
+
+    <!-- Message if no records available -->
+    <div id="no-records" class="no-records" style="display:none;">
+      No employees pending approval.
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript for Approval/Reject Actions -->
+<script>
+  function approveEmployee(button) {
+    // Change the status of the employee to Approved
+    const row = button.closest('tr');
+    const statusCell = row.querySelector('.status');
+    statusCell.textContent = 'Approved';
+    statusCell.style.color = '#4CAF50';  // Green color for approved
+
+    // Disable buttons after approval
+    disableActionButtons(row);
+  }
+
+  function rejectEmployee(button) {
+    // Change the status of the employee to Rejected
+    const row = button.closest('tr');
+    const statusCell = row.querySelector('.status');
+    statusCell.textContent = 'Rejected';
+    statusCell.style.color = '#f44336';  // Red color for rejected
+
+    // Disable buttons after rejection
+    disableActionButtons(row);
+  }
+
+  function disableActionButtons(row) {
+    const actionButtons = row.querySelectorAll('.action-buttons button');
+    actionButtons.forEach(button => {
+      button.disabled = true;
+      button.style.backgroundColor = '#ccc';  // Disabled button color
+      button.style.cursor = 'not-allowed';
+    });
+  }
+
+  // Simulate checking for no pending employee records
+  function checkNoRecords() {
+    const rows = document.querySelectorAll('#employee-table tbody tr');
+    if (rows.length === 0) {
+      document.getElementById('no-records').style.display = 'block';
+    }
+  }
+
+  // Call function to check for no records on page load
+  window.onload = checkNoRecords;
+</script>
+
+</body>
+</html>

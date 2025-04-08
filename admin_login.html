@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7fc;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .login-container {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        padding: 30px;
+        text-align: center;
+      }
+
+      .login-container h2 {
+        color: #333;
+        margin-bottom: 30px;
+      }
+
+      .login-container input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+        box-sizing: border-box;
+      }
+
+      .login-container button {
+        width: 100%;
+        padding: 12px;
+        background-color: #43cea2;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background-color 0.3s;
+      }
+
+      .login-container button:hover {
+        background-color: #185a9d;
+      }
+
+      .login-container .error {
+        color: red;
+        font-size: 14px;
+        margin-top: 10px;
+        display: none;
+      }
+
+      .login-container .toggle-password {
+        cursor: pointer;
+        font-size: 14px;
+        color: #555;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Admin Login</h2>
+
+      <!-- Login Form -->
+      <form id="login-form" method="post">
+        <input
+          type="text"
+          id="admin-id"
+          name="admin-id"
+          placeholder="Admin ID"
+          aria-label="Admin ID"
+          required
+        />
+        <input
+          type="password"
+          id="admin-password"
+          name="admin-password"
+          placeholder="Password"
+          aria-label="Password"
+          required
+        />
+        <span
+          class="toggle-password"
+          onclick="togglePasswordVisibility()"
+          aria-label="Show or hide password"
+        >
+          Show Password
+        </span>
+
+        <button type="submit" id="login-button">Login</button>
+
+        <!-- Error message (if any) -->
+        <div class="error" id="error-message">Invalid Admin ID or Password!</div>
+      </form>
+    </div>
+
+    <script>
+      // Toggle password visibility
+      function togglePasswordVisibility() {
+        const passwordField = document.getElementById("admin-password");
+        const toggleText = document.querySelector(".toggle-password");
+        if (passwordField.type === "password") {
+          passwordField.type = "text";
+          toggleText.textContent = "Hide Password";
+        } else {
+          passwordField.type = "password";
+          toggleText.textContent = "Show Password";
+        }
+      }
+
+      // Handle form submission
+      document.getElementById("login-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const loginButton = document.getElementById("login-button");
+        const errorMessage = document.getElementById("error-message");
+        const adminId = document.getElementById("admin-id").value.trim();
+        const adminPassword = document.getElementById("admin-password").value.trim();
+
+        // Reset error message
+        errorMessage.style.display = "none";
+
+        // Disable button and show loading state
+        loginButton.textContent = "Logging in...";
+        loginButton.disabled = true;
+
+        // Simulate server-side validation
+        setTimeout(() => {
+          // Replace this with actual server-side validation
+          const isValid = adminId === "admin" && adminPassword === "12345678";
+
+          if (isValid) {
+            // Redirect to dashboard if valid
+            window.location.href = "dashboard.html";
+          } else {
+            // Display error message if login fails
+            errorMessage.style.display = "block";
+            loginButton.textContent = "Login";
+            loginButton.disabled = false;
+          }
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>

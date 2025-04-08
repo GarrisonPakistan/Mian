@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freezed Clients</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f7fc;
+      margin: 0;
+      padding: 0;
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+      color: #185a9d;
+      font-size: 28px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .table-container {
+      margin-top: 20px;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #185a9d;
+      color: white;
+      padding: 12px;
+      text-align: center;
+    }
+
+    td {
+      padding: 12px;
+      text-align: center;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .action-buttons button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .unfreeze-button {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .unfreeze-button:hover {
+      background-color: #388E3C;
+    }
+
+    .freeze-button {
+      background-color: #f44336;
+      color: white;
+    }
+
+    .freeze-button:hover {
+      background-color: #d32f2f;
+    }
+
+    @media (max-width: 768px) {
+      .content {
+        padding: 15px;
+      }
+
+      h3 {
+        font-size: 24px;
+      }
+
+      table {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Freezed Clients Section -->
+<div class="content">
+  <h3>Freezed Clients</h3>
+
+  <div class="table-container">
+    <table id="freezed-clients-table">
+      <thead>
+        <tr>
+          <th>Phone Number</th>
+          <th>CNIC</th>
+          <th>Full Name</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Client records will be dynamically added here -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  // Sample freezed client records
+  const freezedClients = [
+    { phoneNumber: '1234567890', cnic: '12345-1234567-1', name: 'John Doe', status: 'Freeze' },
+    { phoneNumber: '9876543210', cnic: '54321-9876543-2', name: 'Jane Smith', status: 'Unfreeze' }
+  ];
+
+  // Dynamically add freezed clients to table
+  const table = document.getElementById('freezed-clients-table').getElementsByTagName('tbody')[0];
+  freezedClients.forEach(client => {
+    const newRow = table.insertRow();
+    newRow.innerHTML = `
+      <td>${client.phoneNumber}</td>
+      <td>${client.cnic}</td>
+      <td>${client.name}</td>
+      <td class="status">${client.status}</td>
+      <td class="action-buttons">
+        <button class="${client.status === 'Freeze' ? 'unfreeze-button' : 'freeze-button'}" onclick="toggleFreezeStatus(this)">
+          ${client.status === 'Freeze' ? 'Unfreeze' : 'Freeze'}
+        </button>
+      </td>
+    `;
+  });
+
+  // Toggle freeze/unfreeze status
+  function toggleFreezeStatus(button) {
+    const row = button.closest('tr');
+    const statusCell = row.querySelector('.status');
+
+    if (statusCell.textContent === 'Freeze') {
+      statusCell.textContent = 'Unfreeze';
+      button.textContent = 'Freeze';
+      button.classList.remove('unfreeze-button');
+      button.classList.add('freeze-button');
+    } else {
+      statusCell.textContent = 'Freeze';
+      button.textContent = 'Unfreeze';
+      button.classList.remove('freeze-button');
+      button.classList.add('unfreeze-button');
+    }
+  }
+</script>
+
+</body>
+</html>
