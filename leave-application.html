@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Application</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #185a9d;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .header-logo img {
+            height: 50px;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        header nav ul li a:hover {
+            color: #43cea2;
+        }
+
+        .leave-application-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .leave-application-container h1 {
+            text-align: center;
+            color: #185a9d;
+            margin-bottom: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        form select, form input, form textarea, form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        form select:focus, form input:focus, form textarea:focus {
+            border-color: #43cea2;
+            outline: none;
+        }
+
+        form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        form button {
+            background-color: #185a9d;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        form button:hover {
+            background-color: #43cea2;
+            transform: scale(1.02);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #185a9d;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-logo">
+            <img src="../img/logo.png" alt="Logo" />
+        </div>
+        <nav>
+            <ul>
+                <li><a href="employee-dashboard.html">Dashboard</a></li>
+                <li><a href="employee-login.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="leave-application-container">
+            <h1>Apply for Leave</h1>
+
+            <form action="../backend/leave-application.php" method="POST" id="leave-application-form">
+                <label for="leave-type">Leave Type:</label>
+                <select id="leave-type" name="leave-type" required>
+                    <option value="" disabled selected>Select Leave Type</option>
+                    <option value="Sick Leave">Sick Leave</option>
+                    <option value="Casual Leave">Casual Leave</option>
+                    <option value="Paid Leave">Paid Leave</option>
+                    <option value="Unpaid Leave">Unpaid Leave</option>
+                </select>
+
+                <label for="leave-start-date">Leave Start Date:</label>
+                <input type="date" id="leave-start-date" name="leave-start-date" required>
+
+                <label for="leave-end-date">Leave End Date:</label>
+                <input type="date" id="leave-end-date" name="leave-end-date" required>
+
+                <label for="leave-reason">Reason for Leave:</label>
+                <textarea id="leave-reason" name="leave-reason" placeholder="Provide a reason for your leave request" required></textarea>
+
+                <button type="submit">Submit Leave Request</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Your Company. All rights reserved.</p>
+    </footer>
+</body>
+</html>

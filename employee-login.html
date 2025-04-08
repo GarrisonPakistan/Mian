@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Login</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Inline styles for a modern and user-friendly design */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            color: #185a9d;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+            border-color: #43cea2;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1rem;
+            color: white;
+            background-color: #185a9d;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #43cea2;
+            transform: scale(1.02);
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        p a {
+            color: #185a9d;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        p a:hover {
+            color: #43cea2;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Employee Login</h2>
+        <form action="../backend/employee-login.php" method="POST">
+            <div class="form-group">
+                <label for="employee-id">Employee ID</label>
+                <input type="text" id="employee-id" name="employee-id" required placeholder="Enter your Employee ID">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required placeholder="Enter your Password">
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <p>New employee? <a href="employee-signup.html">Sign Up</a></p>
+    </div>
+</body>
+</html>

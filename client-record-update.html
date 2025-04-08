@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Client Record</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Inline styles for a modern and user-friendly design */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #185a9d;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .header-logo img {
+            height: 50px;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        header nav ul li a:hover {
+            color: #43cea2;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .client-record-update-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .client-record-update-container h1 {
+            text-align: center;
+            color: #185a9d;
+            margin-bottom: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        form input, form select, form textarea, form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        form input:focus, form select:focus, form textarea:focus {
+            border-color: #43cea2;
+            outline: none;
+        }
+
+        form button {
+            background-color: #185a9d;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        form button:hover {
+            background-color: #43cea2;
+            transform: scale(1.02);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #185a9d;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-logo">
+            <img src="../img/logo.png" alt="Company Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="employee-dashboard.html">Dashboard</a></li>
+                <li><a href="employee-login.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="client-record-update-container">
+            <h1>Update Client Record</h1>
+
+            <form action="../backend/client-record-update.php" method="POST" id="client-record-update-form">
+                <label for="client-id">Client ID:</label>
+                <input type="text" id="client-id" name="client-id" required placeholder="Enter Client ID">
+
+                <label for="client-name">Client Name:</label>
+                <input type="text" id="client-name" name="client-name" required placeholder="Enter Client Name">
+
+                <label for="client-contact">Client Contact:</label>
+                <input type="tel" id="client-contact" name="client-contact" required placeholder="Enter Client Contact Number">
+
+                <label for="client-email">Client Email:</label>
+                <input type="email" id="client-email" name="client-email" required placeholder="Enter Client Email">
+
+                <label for="client-address">Client Address:</label>
+                <textarea id="client-address" name="client-address" placeholder="Enter Client Address" required></textarea>
+
+                <label for="client-status">Client Status:</label>
+                <select id="client-status" name="client-status" required>
+                    <option value="" disabled selected>Select Status</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                    <option value="Suspended">Suspended</option>
+                </select>
+
+                <button type="submit">Update Client Record</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Your Company. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Confirmation message after form submission
+        document.getElementById('client-record-update-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Client record has been updated successfully!');
+            this.submit();
+        });
+    </script>
+</body>
+</html>

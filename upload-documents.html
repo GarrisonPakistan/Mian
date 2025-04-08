@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Documents</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #185a9d;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .header-logo img {
+            height: 50px;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        header nav ul li a:hover {
+            color: #43cea2;
+        }
+
+        .document-upload-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .document-upload-container h1 {
+            text-align: center;
+            color: #185a9d;
+            margin-bottom: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        form select, form input, form textarea, form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        form select:focus, form input:focus, form textarea:focus {
+            border-color: #43cea2;
+            outline: none;
+        }
+
+        form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        form button {
+            background-color: #185a9d;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        form button:hover {
+            background-color: #43cea2;
+            transform: scale(1.02);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #185a9d;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-logo">
+            <img src="../img/logo.png" alt="Logo" />
+        </div>
+        <nav>
+            <ul>
+                <li><a href="employee-dashboard.html">Dashboard</a></li>
+                <li><a href="employee-login.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="document-upload-container">
+            <h1>Upload Your Documents</h1>
+
+            <form action="../backend/upload-documents.php" method="POST" enctype="multipart/form-data" id="upload-form">
+                <label for="document-type">Document Type:</label>
+                <select id="document-type" name="document-type" required>
+                    <option value="" disabled selected>Select Document Type</option>
+                    <option value="CNIC">CNIC</option>
+                    <option value="Passport">Passport</option>
+                    <option value="Employee Photo">Employee Photo</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="upload-file">Choose File:</label>
+                <input type="file" id="upload-file" name="upload-file" accept=".jpg, .jpeg, .png, .pdf" required>
+
+                <label for="document-description">Description (Optional):</label>
+                <textarea id="document-description" name="document-description" placeholder="Provide any additional details about the document"></textarea>
+
+                <button type="submit">Upload Document</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Your Company. All rights reserved.</p>
+    </footer>
+</body>
+</html>
