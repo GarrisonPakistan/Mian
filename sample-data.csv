@@ -1,5 +1,6 @@
-Name,CNIC,Phone
-John Doe,12345-1234567-1,3001234567
-Jane Smith,23456-2345678-2,3012345678
-Ali Khan,34567-3456789-3,3023456789
-Sarah Lee,45678-4567890-4,3034567890
+ID,Name,CNIC,Phone,Email,Status
+1,John Doe,12345-1234567-8,3001234567,john.doe@example.com,Active
+2,Jane Smith,23456-2345678-9,3002345678,jane.smith@example.com,Inactive
+3,Michael Brown,34567-3456789-0,3003456789,michael.brown@example.com,Active
+4,Linda Green,45678-4567890-1,3004567890,linda.green@example.com,Active
+5,David White,56789-5678901-2,3005678901,david.white@example.com,Inactive

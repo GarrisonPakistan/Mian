@@ -1,0 +1,7 @@
+Record Upload Log - April 2025
+
+1. Date: 2025-04-05, File: sample-data.csv, Status: Success, Uploaded by: AdminUser123
+2. Date: 2025-04-06, File: client-data-update.csv, Status: Pending, Uploaded by: AdminUser456
+3. Date: 2025-04-06, File: new-client-data.csv, Status: Failed, Uploaded by: AdminUser123
+   Reason: File format not supported.
+4. Date: 2025-04-06, File: employee-data.csv, Status: Success, Uploaded by: AdminUser789
